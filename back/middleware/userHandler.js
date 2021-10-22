@@ -10,9 +10,7 @@ function userMiddleware(req, res, next) {
         next();
         return;
       } else {
-        fs.mkdirSync(`./back/users/${req.headers.username}`);
-        next();
-        return;
+        throw 500;
       }
     } catch (error) {
       next(500);

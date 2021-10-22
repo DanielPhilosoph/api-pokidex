@@ -12,7 +12,7 @@ app.use("/", userRouter);
 app.use("/pokemon", pokemonRouter);
 
 app.use((req, res, next) => {
-  res.append("Access-Control-Allow-Origin", ["*"]);
+  res.append("Access-Control-Allow-Origin", "*");
   res.append("Access-Control-Allow-Methods", "*");
   res.append("Access-Control-Allow-Headers", "*");
   next();
@@ -20,9 +20,13 @@ app.use((req, res, next) => {
 
 app.use(errorMiddleware);
 app.use(function (req, res, next) {
-  res
-    .status(500)
-    .json({ error: "server error", look_at: "URL, method, headers" });
+  res.status(500).json({
+    error: "server error",
+    look_at: "URL, method, headers",
+    check_header: "Header username is in right format. User name is exsits",
+    check_method:
+      "Check if is the right method. Check if the arguments are in the right format",
+  });
 });
 app.listen(PORT, () => {
   console.log(`Listening at port: ${PORT}`);

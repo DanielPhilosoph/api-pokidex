@@ -95,7 +95,7 @@ function pokemonBeenCaught(id, username) {
     }
     return false;
   } catch (error) {
-    next("Couldn't read from users folder. check username");
+    throw "";
   }
 }
 
